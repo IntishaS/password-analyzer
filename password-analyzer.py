@@ -1,4 +1,8 @@
 import re 
+RED = '\033[31m'
+GREEN = '\033[32m'
+YELLOW = '\033[33m'
+RESET = '\033[0m'
 
 def analyze_password_strength(password):
 
@@ -87,13 +91,13 @@ def analyze_password_strength(password):
 def get_strength_level(score):
 	"""Convert score to strength level"""
 	if score >= 90:
-		return "STRONG", "Excellent! This is a secure password."
+		return f"{GREEN}STRONG{RESET}", f"{GREEN}Excellent! This is a secure password.{RESET}"
 	elif score >= 70:
-		return "GOOD", "Good password but could be stronger."
+		return f"{YELLOW}GOOD{RESET}", f"{YELLOW}Good password but could be stronger.{RESET}"
 	elif score >= 50:
-		return "FAIR", "Moderate password, consider improvements."
+		return f"{YELLOW}FAIR{RESET}", f"{YELLOW}Moderate password, consider improvements.{RESET}"
 	else:
-		return "WEAK", "Weak password, needs significant improvements."
+		return f"{RED}WEAK{RESET}", f"{RED}Weak password, needs significant improvements.{RESET}"
 
 def main():
 	"""Simple command line interface"""
